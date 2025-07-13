@@ -3,12 +3,15 @@ const morgan = require("morgan");
 const userRoutes = require("../server/routes/userRoutes");
 const taskRoutes=require('./routes/taskRoutes');
 const app = express(); // ✅ this must come after `require("express")`
+const db=require('../server/config/db');
+
 
 app.use(morgan("dev"));
 app.use(express.json());
 app.use("/api/user", userRoutes);
  // ✅ connect the route
  app.use("/api/tasks",taskRoutes);
+ db();
 
 const port = 3000;
 
