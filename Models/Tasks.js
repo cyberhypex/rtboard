@@ -1,11 +1,15 @@
-class Tasks{
-    constructor(title,description,assignedUser,status,priority){
-        this.title=title;
-        this.description=description;
-        this.assignedUser=assignedUser;
-        this.status=status;
-        this.priority=priority;
-    }
-}
+const mongoose=require('mongoose');
 
-module.exports=Tasks;
+const userSchema=new mongoose.Schema({
+    name:{
+        type:String,
+        required:true
+    },
+    email:{
+        type:String,
+        required:true
+
+    }
+})
+
+module.exports=mongoose.model('User',userSchema);
