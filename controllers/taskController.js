@@ -1,14 +1,23 @@
-const Tasks=require('../Models/Users');
+const Tasks=require('../Models/Tasks');
 
-const tasks=[];
+exports.createTask=async(req,res)=>{
+   try{
+   const { title, description, assignedUser, status, priority } = req.body;
+   const task = new Tasks({
+      title,
+      description,
+      assignedUser,
+      status,
+      priority
+    });
+    await task.save();
 
-exports.tasks=(req,res)=>{
-    res.json(tasks);
+    res.status(201).json({
+        message:"Task created Successfully",
+
+    })
+   }
+   catch(err){
+    res.status(500).json(err);
+   }
 }
-exports.createTasks=(req,res)=>{
-    const {title,description,assignedUser,status,priority}=req.body;
-    const  task=new Tasks(title,description,assignedUser,status,priority);
-    tasks.push(task);
-    res.status(201).json(task);
-}
- 

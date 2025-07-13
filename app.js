@@ -9,6 +9,7 @@ const db=require('../server/config/db');
 app.use(morgan("dev"));
 app.use(express.json());
 app.use("/api/user", userRoutes);
+app.use("/api/task",taskRoutes);
  // ✅ connect the route
 
  db();
