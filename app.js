@@ -10,7 +10,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use("/api/user", userRoutes);
  // ✅ connect the route
- app.use("/api/tasks",taskRoutes);
+
  db();
 
 const port = 3000;
